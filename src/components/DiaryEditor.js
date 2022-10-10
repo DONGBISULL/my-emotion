@@ -1,15 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState ,useCallback} from "react";
+import { useNavigate } from "react-router-dom";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
-import { useNavigate } from "react-router-dom";
 import EmotionItem from "./EmotionItem";
 import { emotionList } from "../util/emotionList";
+import { getStringDate } from "../util/dateFormat";
 import { DiaryDispatchContext } from "../App";
-import { useCallback } from "react";
-
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const navigate = useNavigate();

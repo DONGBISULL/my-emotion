@@ -320,13 +320,57 @@ head button {
 
 }
 
-.DiaryEditor .text_wrapper .thumbnail {
+.thumbnail {
   width: 100%;
-  width: 400px;
+  border-radius: 5px;
 }
 
 .DiaryEditor .control_box {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+/* Diary */
+
+.DiaryPage {
+
+}
+
+.DairyPage .DiaryPage_flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.DairyPage .diary_emotion{
+  color: #1e8bf1;
+  margin-left: 10px;
+}
+
+.DairyPage .emotion_img_wrapper img{
+  width: 70px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.DairyPage .diary_content_wrapper{
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ececec;
+}
+.DairyPage .diary_content_wrapper p{
+  padding: 20px;
+  text-align: left;
+  word-break: keep-all; /* 줄바꿈 시 단어 쪼개지 말고 줄바꿈  */
+  overflow-wrap: break-word; /* 길이가 범위를 넘어갈 경우 줄바꿈*/
+}
+.DairyPage .DiaryPage_button_wrapper {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.DiaryPage_button_wrapper button{
+  margin-bottom: 20px;
+  width: 100%;
 }
