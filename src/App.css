@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Jua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Gothic&display=swap');
 
 body {
   background-color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Do Hyeon', sans-serif;
-  min-height: 100ch;
+  font-family: 'Nanum Gothic', sans-serif;
+  min-height: 100vh;
   margin: 0px;
 }
 
@@ -88,6 +88,7 @@ header>div {
 header .head_text {
   width: 50%;
   font-size: 25px;
+  font-family: 'Do Hyeon', sans-serif;
   justify-content: center;
 }
 
@@ -102,7 +103,7 @@ header .head_btn_left {
 }
 
 head button {
-  font-family: 'Jua', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
 }
 
 /* DiaryList */
@@ -113,12 +114,37 @@ head button {
   justify-content: space-between;
 }
 
-.DiaryList .menu_wrapper .right_col {
-  flex-grow: 1;
+.DiaryList .left_col{
+  font-family: 'Do Hyeon', sans-serif;
+  margin-top: 10px;
+  font-size: 20px;
+}
+ 
+.DiaryList .bottom_col{
+  position: fixed;
+  bottom:20px;
+  box-sizing: border-box;
+  font-weight: bold;
 }
 
-.DiaryList .menu_wrapper .right_col button {
+.DiaryList .bottom_col button{
   width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  font-size: 16px;
+  bottom: 16px;
+}
+
+@media (min-width: 700px) {
+  .DiaryList .bottom_col button {
+    width: 640px;
+  }
+}
+
+@media (max-width: 700px) {
+  .DiaryList .bottom_col button {
+    width: 90vw;
+  }
 }
 
 .DiaryList .ControlMenu {
@@ -129,18 +155,27 @@ head button {
 
   background-color: #ececec;
   cursor: pointer;
-  font-family: 'Jua', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 14px;
 }
 
 /* DiaryItem */
 
+.DiaryItemWapper {
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  box-shadow: 0 0 7px #dedede;
+  padding-top:  10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
 .DiaryItem {
-  padding-top: 15px;
+  padding-top: 10px;
   padding-bottom: 15px;
-
   border-bottom: qpx solid #e2e2e2;
-
   display: flex;
   justify-content: space-between;
 }
@@ -186,7 +221,8 @@ head button {
 }
 
 .DiaryItem .diary_date {
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: 900;
   margin-bottom: 5px;
 }
 
@@ -197,12 +233,66 @@ head button {
 
 .DiaryItem .diary_conent_preview {
   font-size: 15px;
+  padding-left: 4px;
 }
 
+/** 드롭다운 위한 라인 */
 .DiaryItem .btn_wrapper {
-  min-width: 70px;
+  min-width: 35px;
+  max-height: 35px;
+  position: relative;
+  cursor: pointer;
+  text-align: right;
 }
 
+.DiaryItem .btn_wrapper .line{
+  width:  23px;
+  height: 25px;
+  position: absolute;
+  left : 1px;
+  top : 1px;
+  transition: transform 300ms ease-in-out;
+}
+
+.DiaryItem .btn_wrapper .line_inner {
+  height:  4px;
+  width:  30px;
+  border-radius: 4px;
+  background: #222;
+  position: absolute;
+  transition: transform 200ms ease-in-out;
+  transition-delay: 200ms;
+  /* ease-in-out ; 천천-보통-천천 */
+}
+
+.DiaryItem .btn_wrapper .line_inner_1 {
+ top: 12px;
+ transform : translateY(-5px);
+ /* y축 이동 */
+}
+
+.DiaryItem .btn_wrapper .line_inner_2 {
+  bottom: 12px;
+  transform : translateY(5px);
+ }
+ 
+.DiaryItem .btn_wrapper.active .line_1 {
+  transform : rotateZ(45deg);
+ }
+ 
+ .DiaryItem .btn_wrapper.active .line_2 {
+  transform : rotateZ(-45deg);
+  }
+
+  .menu-container.active .line_inner {
+    transform: none;
+    transition: transform 200ms ease-in-out;
+  }
+  
+  .DiaryItem .btn_wrapper.active .line {
+    transition-delay: 200ms;
+  }
+ 
 /* DiaryEditor */
 
 .DiaryEditor {}
@@ -228,7 +318,7 @@ head button {
   padding: 10px;
   cursor: pointer;
 
-  font-family: 'Jua', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 15px;
 }
 
@@ -255,7 +345,7 @@ head button {
 
 .DiaryEditor textarea {
   /* font-family: "Nanum Pen Script"; */
-  font-family: 'Jua', sans-serif;
+  font-family: 'Do Hyeon', sans-serif;
   font-size: 20px;
 
   box-sizing: border-box;

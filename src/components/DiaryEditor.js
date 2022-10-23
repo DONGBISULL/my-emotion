@@ -108,7 +108,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
           <section className="img_input_wrapper">
             <h3> 📝 오늘의 일기</h3>
             <MyButton
-              text={"📷 이미지 담기"}
+              text={"📷 이미지 선택"}
               type={"positive"}
               onClick={imgUpload}
             />

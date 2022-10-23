@@ -53,7 +53,8 @@ function DiaryList({ diaryList }) {
   return (
     <div className="DiaryList">
       <div className="menu_wrapper">
-        <div className="left_col">
+        <div className="left_col"> 📝 일기 {diaryList.length}개</div>
+        <div className="right_col">
           <ControlMenu
             value={sortType}
             onChange={setSortType}
@@ -65,7 +66,15 @@ function DiaryList({ diaryList }) {
             optionList={filterOptionList}
           />
         </div>
-        <div className="right_col">
+      </div>
+      {getProcessedDiaryList().map((it) => (
+        <div key={it.id}>
+          <DiaryItem key={it.id} {...it} />
+        </div>
+      ))}
+
+      <div className="menu_wrapper">
+        <div className="bottom_col">
           <MyButton
             type={"positive"}
             text={"새 일기쓰기"}
@@ -73,11 +82,6 @@ function DiaryList({ diaryList }) {
           />
         </div>
       </div>
-      {getProcessedDiaryList().map((it) => (
-        <div key={it.id}>
-          <DiaryItem key={it.id} {...it} />
-        </div>
-      ))}
     </div>
   );
 }
