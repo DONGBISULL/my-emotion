@@ -222,13 +222,15 @@ head button {
 
 .DiaryItem .diary_date {
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 900 ;
+  margin-bottom: 5px;
   margin-bottom: 5px;
 }
 
 .DiaryItem .diary_day {
+  font-size: 14px;
   color: rgb(185, 179, 179);
-  display: block;
+  /* display: block; */
 }
 
 .DiaryItem .diary_conent_preview {
@@ -238,16 +240,16 @@ head button {
 
 /** 드롭다운 위한 라인 */
 .DiaryItem .btn_wrapper {
-  min-width: 35px;
-  max-height: 35px;
+  min-width: 30px;
+  max-height: 30px;
   position: relative;
   cursor: pointer;
   text-align: right;
 }
 
 .DiaryItem .btn_wrapper .line{
-  width:  23px;
-  height: 25px;
+  width:  14px;
+  height: 24px;
   position: absolute;
   left : 1px;
   top : 1px;
@@ -256,7 +258,7 @@ head button {
 
 .DiaryItem .btn_wrapper .line_inner {
   height:  4px;
-  width:  30px;
+  width:  20px;
   border-radius: 4px;
   background: #222;
   position: absolute;

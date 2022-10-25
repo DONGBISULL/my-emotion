@@ -85,12 +85,13 @@ function App() {
   /**
    * CREATE 게시글 작성
    */
-  const onCreate = (date, content, emotion, img) => {
+  const onCreate = (date, time, content, emotion, img) => {
     dispatch({
       type: "CREATE",
       data: {
         id: dataId,
         date: new Date(date).getTime(),
+        time,
         content: content,
         emotion: emotion,
         img: img,
@@ -112,12 +113,13 @@ function App() {
   /**
    * EDIT 게시글 수정
    */
-  const onEdit = (targetId, date, content, emotion, img) => {
+  const onEdit = (targetId, date, time, content, emotion, img) => {
     dispatch({
       type: "EDIT",
       data: {
         id: targetId,
         date: new Date(date).getTime(),
+        time,
         content: content,
         emotion: emotion,
         img: img,
@@ -127,26 +129,26 @@ function App() {
 
   return (
     // <DarkModeProvider>
-      <DiaryDispatchContext.Provider
-        value={{
-          onCreate,
-          onRemove,
-          onEdit,
-        }}
-      >
-        <DiaryStateContext.Provider value={data}>
-          <BrowserRouter>
-            <div className="App">
-              <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/new" element={<New />}></Route>
-                <Route path="/edit/:id" element={<Edit />}></Route>
-                <Route path="/diary/:id" element={<Diary />}></Route>
-              </Routes>
-            </div>
-          </BrowserRouter>
-        </DiaryStateContext.Provider>
-      </DiaryDispatchContext.Provider>
+    <DiaryDispatchContext.Provider
+      value={{
+        onCreate,
+        onRemove,
+        onEdit,
+      }}
+    >
+      <DiaryStateContext.Provider value={data}>
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/new" element={<New />}></Route>
+              <Route path="/edit/:id" element={<Edit />}></Route>
+              <Route path="/diary/:id" element={<Diary />}></Route>
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </DiaryStateContext.Provider>
+    </DiaryDispatchContext.Provider>
     // </DarkModeProvider>
   );
 }
