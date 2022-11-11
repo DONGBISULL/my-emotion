@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState ,useCallback} from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
@@ -8,6 +14,13 @@ import { getStringDate } from "../util/dateFormat";
 import { DiaryDispatchContext } from "../App";
 
 const DiaryEditor = ({ isEdit, originData }) => {
+  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+  
+  const nowHour = new Date().getHours();
+  const nowMinute = new Date().getMinutes();
+  const strAmPm = nowHour >= 12 ? "오후" : "오전";
+  const formatHour = nowHour >= 12 ? (nowHour - 12) : nowHour;
+
   const navigate = useNavigate();
 
   const contentRef = useRef();
@@ -17,7 +30,12 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [emotion, setEmotion] = useState(3);
   const [date, setDate] = useState(getStringDate(new Date()));
   const [content, setContent] = useState("");
-  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
+
+  //시간 구하기 = 오전 오후
+  const [time, setTime] = useState(
+  `${strAmPm} ${formatHour}:${String(nowMinute).padStart(2,'0')} `
+  );
+
 
   const handleClickEmotion = (emotion) => {
     setEmotion(emotion);
@@ -46,6 +64,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
       setDate(getStringDate(new Date(parseInt(originData.date))));
       setEmotion(originData.emotion);
       setImg(originData.img);
+      setTime(`${strAmPm} ${formatHour}:${nowMinute}`);
       setContent(originData.content);
     }
   }, [isEdit, originData]);
@@ -62,9 +81,9 @@ const DiaryEditor = ({ isEdit, originData }) => {
       )
     ) {
       if (!isEdit) {
-        onCreate(date, content, emotion, img);
+        onCreate(emotion , content, date, img, time);
       } else {
-        onEdit(originData.id, date, content, emotion, img);
+        onEdit(originData.id,emotion , content, date, img, time);
       }
     }
 
@@ -130,7 +149,6 @@ const DiaryEditor = ({ isEdit, originData }) => {
               />
             </div>
           </section>
-
           <section>
             <div className="control_box">
               <MyButton text={"취소하기"} onClick={() => navigate(-1)} />

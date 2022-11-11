@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MyButton from "./MyButton";
 import { useNavigate } from "react-router-dom";
 
-const DiaryItem = ({ id, emotion, content, date, img }) => {
+const DiaryItem = ({ id, emotion, content, date, img ,time}) => {
   const navigate = useNavigate();
   const [dropdown, setDropdown] = useState(false);
 
@@ -47,9 +47,9 @@ const DiaryItem = ({ id, emotion, content, date, img }) => {
         </div>
         <div onClick={goDatail} className="info_wrapper">
           <div className="diary_date">
-            {dateText}
-            <span className="diary_day">{dayText}</span>
+            {dateText}  <span className="diary_day">({dayText})</span>
           </div>
+            <span className="diary_time">{time}</span>
         </div>
         <div
           className={dropdown ? "btn_wrapper active" : "btn_wrapper"}
@@ -61,16 +61,13 @@ const DiaryItem = ({ id, emotion, content, date, img }) => {
           <div className="line line_2">
             <div className="line_inner line_inner_2"></div>
           </div>
-          {/* <div className="line line_1">
-            <div className="line_inner line_inner_1"></div>
-          </div>
-          <div className="line line_2">
-            <div className="line_inner line_inner_2"></div>
-          </div> */}
         </div>
       </div>
       <div className="diary_conent_wrapper">
         <div className="diary_conent_preview">{content.slice(0, 25)}</div>
+      </div>
+      <div>
+
       </div>
       {/* <div className="btn_wrapper">
         <MyButton onClick={goEdit} text={"수정하기"} />

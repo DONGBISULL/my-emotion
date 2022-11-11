@@ -42,50 +42,50 @@ const reducer = (state, action) => {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
-const dummyData = [
-  {
-    id: 1,
-    emotion: 1,
-    content: "오늘의 일기 1",
-    date: 1662982559004,
-  },
-  {
-    id: 2,
-    emotion: 2,
-    content: "오늘의 일기 2",
-    date: 1662982569996,
-  },
-  {
-    id: 3,
-    emotion: 3,
-    content: "오늘의 일기 3",
-    date: 1662982569997,
-    img: "",
-  },
-  {
-    id: 4,
-    emotion: 4,
-    content: "오늘의 일기 4",
-    date: 1662982569999,
-    img: "",
-  },
-  {
-    id: 5,
-    emotion: 5,
-    content: "오늘의 일기 5 ",
-    date: 1662982711153,
-    img: "",
-  },
-];
+// const dummyData = [
+//   {
+//     id: 1,
+//     emotion: 1,
+//     content: "오늘의 일기 1",
+//     date: 1662982559004,
+//   },
+//   {
+//     id: 2,
+//     emotion: 2,
+//     content: "오늘의 일기 2",
+//     date: 1662982569996,
+//   },
+//   {
+//     id: 3,
+//     emotion: 3,
+//     content: "오늘의 일기 3",
+//     date: 1662982569997,
+//     img: "",
+//   },
+//   {
+//     id: 4,
+//     emotion: 4,
+//     content: "오늘의 일기 4",
+//     date: 1662982569999,
+//     img: "",
+//   },
+//   {
+//     id: 5,
+//     emotion: 5,
+//     content: "오늘의 일기 5 ",
+//     date: 1662982711153,
+//     img: "",
+//   },
+// ];
 
 function App() {
-  const [data, dispatch] = useReducer(reducer, dummyData);
+  const [data, dispatch] = useReducer(reducer, []);
   const dataId = useRef(0);
 
   /**
    * CREATE 게시글 작성
    */
-  const onCreate = (date, time, content, emotion, img) => {
+  const onCreate = (emotion, content, date, img ,time) => {
     dispatch({
       type: "CREATE",
       data: {
@@ -112,8 +112,9 @@ function App() {
 
   /**
    * EDIT 게시글 수정
+   * //id
    */
-  const onEdit = (targetId, date, time, content, emotion, img) => {
+  const onEdit = (targetId, emotion, content, date, img ,time) => {
     dispatch({
       type: "EDIT",
       data: {

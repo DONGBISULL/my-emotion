@@ -227,6 +227,11 @@ head button {
   margin-bottom: 5px;
 }
 
+.DiaryItem .diary_time {
+  font-size: 13px;
+  color: rgb(185, 179, 179);
+}
+
 .DiaryItem .diary_day {
   font-size: 14px;
   color: rgb(185, 179, 179);
